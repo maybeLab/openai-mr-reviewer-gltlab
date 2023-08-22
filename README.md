@@ -202,7 +202,9 @@ stages:
 review-job: # This job runs in the review stage, which runs first.
   stage: review
   script:
-    - curl -o dist.tar.gz https://github.com/maybeLab/openai-mr-reviewer-gltlab/releases/download/v1.0.0/dist.tar.gz && tar -vxzf dist.tar.gz && node dist/index.cjs
+    - curl -L https://github.com/maybeLab/openai-mr-reviewer-gltlab/releases/download/v1.0.0/dist.tar.gz > dist.tar.gz
+    - tar -vxzf dist.tar.gz
+    - node dist/index.cjs
     - echo "review complete."
     - rm -rf ./dist ./dist.tar.gz
   only:
